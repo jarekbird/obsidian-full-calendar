@@ -6,12 +6,10 @@ Create calendars inline with your notes from [dataviewjs](https://blacksmithgu.g
 ```dataviewjs
 this.container.style.minHeight = "500px";
 const { renderCalendar } = app.plugins.plugins["obsidian-full-calendar"];
-let calendar = renderCalendar(this.container, [[{start: new Date(), id: "id", title: "Now and for an hour"}]]);
-calendar.render()
+renderCalendar(this.container, [[{start: new Date(), id: "id", title: "Now and for an hour"}]])
+  .then(calendar => calendar.render());
 ```
 ````
-
-Unfortunately, there's a bug on first render and you need to interact with the calendar by changing the week or view before it renders properly.
 
 `renderCalendar()` includes all events from all event sources set in the global settings when no event sources aer passed in.
 
@@ -19,8 +17,7 @@ Unfortunately, there's a bug on first render and you need to interact with the c
 ```dataviewjs
 this.container.style.minHeight = "500px";
 const { renderCalendar } = app.plugins.plugins["obsidian-full-calendar"];
-let calendar = renderCalendar(this.container);
-calendar.render()
+renderCalendar(this.container).then(calendar => calendar.render());
 ```
 ````
 
